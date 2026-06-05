@@ -1,0 +1,33 @@
+{
+  "name": "liner",
+  "displayName": "Liner",
+  "version": "0.1.0",
+  "description": "Source-backed web, scholar, AI answer, and deep research workflows powered by Liner MCP.",
+  "author": {
+    "name": "Liner",
+    "url": "https://liner.com"
+  },
+  "homepage": "https://liner.com/developers/docs/mcp",
+  "repository": "https://github.com/liner/liner-claude-plugin",
+  "license": "Apache-2.0",
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "Liner API Key",
+      "description": "Your Liner Developer Platform API key.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "keywords": [
+    "liner",
+    "mcp",
+    "search",
+    "web-search",
+    "scholar-search",
+    "citations",
+    "research",
+    "deep-research",
+    "ai-search"
+  ]
+}
