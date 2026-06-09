@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+- Switched marketplace authentication from plugin-provided API-key configuration to Liner MCP OAuth discovery.
+- Removed the plugin `userConfig.api_key` field and static Authorization header.
+- Updated setup, marketplace, launch, and Connector Directory materials for OAuth-ready submission.
+
 ## 0.1.0
 
 - Initial Claude Code/Cowork plugin package for Liner MCP.

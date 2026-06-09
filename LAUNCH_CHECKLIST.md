@@ -1,6 +1,6 @@
 # Official Launch Checklist
 
-Use this checklist to move the Liner Claude plugin from local package to the official Claude plugin directory / `claude-plugins-official` marketplace.
+Use this checklist to move the Liner Claude plugin from local package to Claude's reviewed plugin marketplace submission. Anthropic's public docs describe third-party submissions as reviewed for the community marketplace; `claude-plugins-official` is curated separately at Anthropic's discretion.
 
 ## 1. Finalize Ownership
 
@@ -44,13 +44,27 @@ npx -y @modelcontextprotocol/inspector --cli https://platform.liner.com/api/v1/m
 
 Expected: all seven Liner MCP tools are listed.
 
+Run OAuth discovery checks:
+
+```bash
+curl -i https://platform.liner.com/api/v1/mcp
+curl -sS https://platform.liner.com/.well-known/oauth-protected-resource | jq .
+curl -sS https://platform.liner.com/.well-known/oauth-authorization-server | jq .
+```
+
+Expected:
+
+- MCP endpoint returns `401` with a `WWW-Authenticate` protected-resource metadata pointer.
+- Protected-resource metadata `resource` exactly matches `https://platform.liner.com/api/v1/mcp`.
+- Authorization-server metadata includes `authorization_endpoint`, `token_endpoint`, `registration_endpoint`, PKCE `S256`, public-client token auth, and `mcp` scope.
+
 ## 4. Test Install UX
 
 - Install or load the plugin in Claude Code.
-- Confirm Claude Code prompts for the sensitive `Liner API Key` plugin setting.
-- Open `/mcp` and confirm the `liner` MCP server connects.
+- Open `/mcp`, select the `liner` server, and complete OAuth login in the browser.
+- Confirm the `liner` MCP server connects after OAuth.
 - Exercise the setup skill and the source-backed answer, scholar search, and research brief workflows.
-- Confirm users are never asked to paste API keys into chat.
+- Confirm users are never asked to paste API keys or OAuth tokens into chat.
 
 ## 5. Submit To Claude
 
@@ -64,12 +78,13 @@ Submission inputs:
 - Use the public GitHub repo link unless Anthropic specifically asks for a zip.
 - Use copy from `MARKETPLACE.md`.
 - Attach or reference `assets/liner-logo-square-512.png`.
-- Mention the plugin bundles a remote Streamable HTTP MCP server and stores the Liner API key through Claude Code sensitive plugin configuration.
+- Mention the plugin bundles a remote Streamable HTTP MCP server and uses Liner MCP OAuth discovery.
 - Include `VALIDATION_REPORT.md` as the testing summary.
+- If the business goal is `claude-plugins-official`, submit through the normal form first, then use Liner's Anthropic partner or marketplace contact to request official curation.
 
 ## 6. After Approval
 
-- Confirm the plugin appears in the Claude Code official marketplace / plugin directory.
+- Confirm the plugin appears in the reviewed Claude Code marketplace / plugin directory.
 - Install from the public listing on a fresh machine or account.
 - Run `/mcp` and all seven smoke prompts from `TEST_PLAN.md`.
 - Monitor support requests for auth setup, MCP connection failures, and Deep Research runtime issues.
@@ -77,15 +92,10 @@ Submission inputs:
 
 ## Connector Directory Follow-Up
 
-Do not submit the reviewed Claude Connectors Directory entry yet.
+The auth blocker is resolved for a reviewed Claude Connectors Directory submission because Liner MCP now advertises OAuth discovery metadata.
 
-Current blockers:
+Remaining connector work:
 
-- Liner MCP uses Bearer API-key auth; Claude reviewed authenticated connectors require an OAuth-compatible flow or Anthropic-approved custom support.
-- MCP Inspector `tools/list` did not show `title` or `readOnlyHint` annotations for the current tool schemas.
-
-Next connector work:
-
-- Add MCP tool annotations server-side: `title` and `readOnlyHint: true`.
-- Implement OAuth with CIMD/DCR, or get Anthropic approval for custom connector authentication.
+- Confirm OAuth login works from Claude.ai with a fresh reviewer account.
+- Confirm MCP tool annotations are visible server-side: `title` and `readOnlyHint: true`.
 - Re-run the Connector Directory readiness tests in `CONNECTOR_DIRECTORY_DRAFT.md`.

@@ -23,8 +23,6 @@ Run:
 claude --plugin-dir ./liner-claude-plugin
 ```
 
-When prompted, enter a Liner API key in the sensitive plugin configuration field.
-
 Inside Claude Code:
 
 ```text
@@ -36,18 +34,26 @@ Expected:
 
 - Plugin appears as `liner`.
 - MCP server appears as `liner`.
-- MCP server connects successfully.
+- `/mcp` shows the `liner` server needs authentication on first use.
+- The user can complete browser-based OAuth login.
+- MCP server connects successfully after OAuth.
 - The Liner server exposes these tools: `search_web`, `search_scholar`, `quick_answer`, `ai_search`, `ai_search_pro`, `deep_research`, `deep_research_pro`.
 
-## Missing-Key Test
+## OAuth Discovery Test
 
-Run Claude Code without `LINER_API_KEY`.
+Run an unauthenticated request against the MCP endpoint:
+
+```bash
+curl -i https://platform.liner.com/api/v1/mcp
+```
 
 Expected:
 
-- No API key is printed or requested in chat.
-- Claude Code prompts for the sensitive `Liner API Key` plugin setting, or the server fails authentication clearly if no key is configured.
-- The setup skill directs the user to configure the plugin key and reload the plugin.
+- Response status is `401 Unauthorized`.
+- Response includes `WWW-Authenticate: Bearer resource_metadata="https://platform.liner.com/.well-known/oauth-protected-resource"`.
+- Protected-resource metadata has `resource: "https://platform.liner.com/api/v1/mcp"`.
+- Authorization-server metadata advertises authorization, token, registration, and revocation endpoints.
+- `scopes_supported` includes `mcp`.
 
 ## Tool Exercise Prompts
 
@@ -82,21 +88,19 @@ rg -n "sk-[A-Za-z0-9_-]{20,}|liner_[A-Za-z0-9_-]{20,}" ./liner-claude-plugin
 Expected:
 
 - No real API keys.
-- Only placeholder references to `LINER_API_KEY`.
+- No plugin configuration asks users to enter API keys.
 
 ## Connector Directory Readiness Tests
 
-Run only after the OAuth-compatible auth path exists:
-
-- Use MCP Inspector against `https://platform.liner.com/api/v1/mcp`.
-- Verify each tool has `title` and `readOnlyHint: true`.
 - Add the server as a custom connector in Claude.ai.
+- Complete OAuth login with a fresh Liner test account.
+- Verify each tool has `title` and `readOnlyHint: true`.
 - Exercise every tool from Claude.ai and Claude Code.
 - Confirm reviewer credentials work from a fresh account.
 
 ## Direct MCP Inspector Smoke Test
 
-Maintainers can test the remote MCP endpoint outside Claude Code by setting `LINER_API_KEY` locally:
+Maintainers can still test the remote MCP endpoint outside Claude Code with a server-issued bearer credential, for example from `.env`. This validates the tool surface but does not replace browser OAuth testing for marketplace review:
 
 ```bash
 set -a; . ./.env; set +a

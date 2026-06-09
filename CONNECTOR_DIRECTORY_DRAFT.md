@@ -1,6 +1,6 @@
 # Claude Connectors Directory Draft
 
-This is a held draft for a future Claude Connectors Directory submission. Do not submit until the authentication blocker is resolved.
+Use this draft for a Claude Connectors Directory submission after final OAuth login and tool annotation checks pass.
 
 ## Submission Status
 
@@ -8,11 +8,11 @@ This is a held draft for a future Claude Connectors Directory submission. Do not
 | --- | --- |
 | MCP server URL | Ready: `https://platform.liner.com/api/v1/mcp` |
 | Transport | Ready: Streamable HTTP |
-| Tool surface | Ready for review after schema audit |
-| Current auth | API-key Bearer token via `LINER_API_KEY` |
-| Directory auth blocker | Static user-pasted bearer tokens are not supported for reviewed authenticated connectors. |
-| Required next auth step | Implement OAuth with CIMD/DCR, request Anthropic-held credentials, or request custom connection support from Anthropic. |
-| Submission recommendation | Hold until auth is compatible. |
+| OAuth discovery | Ready: MCP returns `401` with `WWW-Authenticate` protected-resource metadata. |
+| Authorization server | Ready: `https://platform.liner.com/.well-known/oauth-authorization-server` advertises authorization, token, registration, revocation, PKCE S256, and `mcp` scope. |
+| Tool surface | Ready after final `title` and `readOnlyHint: true` schema audit. |
+| Current auth | OAuth 2.0 authorization code with PKCE and dynamic client registration. |
+| Submission recommendation | Submit after a fresh Claude.ai OAuth login test and tool annotation audit. |
 
 ## Server Basics
 
@@ -35,8 +35,11 @@ This is a held draft for a future Claude Connectors Directory submission. Do not
 | --- | --- |
 | Connector type | Remote MCP server |
 | Protocol | MCP over Streamable HTTP |
-| Auth type for final submission | OAuth 2.0, pending implementation or Anthropic-approved alternative |
-| Current auth type | Bearer token from Liner API key |
+| Auth type | OAuth 2.0 |
+| OAuth issuer | `https://platform.liner.com` |
+| Protected-resource metadata | `https://platform.liner.com/.well-known/oauth-protected-resource` |
+| Authorization-server metadata | `https://platform.liner.com/.well-known/oauth-authorization-server` |
+| Scope | `mcp` |
 | Read/write capabilities | Read-only |
 | Allowed link URIs | Leave blank unless future MCP App UI or `ui/open-link` support is added. |
 | MCP App UI | No for v1; carousel screenshots not required. |
@@ -84,13 +87,14 @@ Fill before submission:
 | Test account has API credits | `[fill]` |
 | Features enabled | Web Search, Scholar Search, Quick Answer, AI Search, AI Search Pro, Deep Research, Deep Research Pro |
 | Expiration | Non-expiring |
-| Setup notes | `[fill after OAuth path is complete]` |
+| Setup notes | Reviewer should connect the Liner connector and complete OAuth login in Claude. |
 
 ## Launch Readiness
 
 Test before submission:
 
-- Add as a custom connector in Claude.ai after OAuth-compatible auth is available.
+- Add as a custom connector in Claude.ai.
+- Complete OAuth login with a fresh reviewer account.
 - Test in Claude.ai, Claude Desktop, Claude Code, and Cowork where available.
 - Run MCP Inspector against every tool.
 - Preserve request IDs or trace IDs from each successful tool call for review debugging.

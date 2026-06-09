@@ -1,13 +1,13 @@
 # Liner Claude Plugin
 
-Use Liner's remote MCP server from Claude Code and Cowork for source-backed web search, scholar search, cited answers, and deep research workflows.
+Use Liner's OAuth-secured remote MCP server from Claude Code and Cowork for source-backed web search, scholar search, cited answers, and deep research workflows.
 
 Liner provides AI-powered search APIs for applications that need fresh web context, academic retrieval, cited answers, and long-form research reports. This plugin bundles the production Liner MCP server and a small set of skills that help Claude choose the right Liner tool for the task.
 
 ## What This Plugin Adds
 
 - A remote MCP server named `liner` at `https://platform.liner.com/api/v1/mcp`.
-- Secure setup for your Liner API key through Claude Code plugin configuration.
+- OAuth login through Claude Code's MCP authentication flow.
 - Workflow skills for source-backed answers, scholarly retrieval, and research briefs.
 
 ## Available MCP Tools
@@ -27,7 +27,7 @@ All current Liner MCP tools are read-only: they retrieve or synthesize informati
 ## Requirements
 
 - Claude Code with plugin support.
-- A Liner API key from the Liner Developer Platform.
+- A Liner account with access to Liner MCP.
 
 ## Local Development Install
 
@@ -37,14 +37,14 @@ From a directory that contains this plugin:
 claude --plugin-dir ./liner-claude-plugin
 ```
 
-When prompted, enter your Liner API key in the plugin configuration. Claude Code stores the value as a sensitive plugin setting. Inside Claude Code:
+Inside Claude Code:
 
 ```text
 /reload-plugins
 /mcp
 ```
 
-Confirm the `liner` MCP server appears and is connected. If tools do not appear, restart Claude Code after saving the plugin configuration.
+Confirm the `liner` MCP server appears, then choose the authentication option and complete the OAuth login in your browser. Claude Code stores and refreshes OAuth tokens securely. If tools do not appear after login, run `/reload-plugins` or restart Claude Code.
 
 ## Example Prompts
 
@@ -69,23 +69,19 @@ Use Liner to create a concise source-backed brief on agentic search products.
 | `liner:research-brief` | Choose between `deep_research` and `deep_research_pro`. |
 | `liner:scholar-search` | Use `search_scholar` for academic retrieval. |
 
-## Authentication Notes
+## OAuth Notes
 
-This plugin uses the current Liner MCP API-key flow. Claude Code stores the key as a sensitive plugin configuration value and injects it into the MCP Authorization header:
+This plugin relies on Liner MCP OAuth discovery. The plugin intentionally does not ship an Authorization header or ask users for an API key.
 
-```json
-{
-  "Authorization": "Bearer ${user_config.api_key}"
-}
-```
+When Claude Code connects without a token, Liner returns `401 Unauthorized` with a `WWW-Authenticate` header pointing to protected-resource metadata. Claude Code uses that metadata to discover `https://platform.liner.com/.well-known/oauth-authorization-server`, then starts the browser-based OAuth flow from `/mcp`.
 
-Do not paste real API keys into chat, commit them to this repository, or place them directly in `.mcp.json`.
+Do not paste tokens or API keys into chat, commit them to this repository, or place them directly in `.mcp.json`.
 
 ## Claude Connectors Directory Status
 
-This plugin is intended for Claude Code and Cowork distribution first. A reviewed Claude Connectors Directory listing for all Claude surfaces should be held until Liner has an OAuth-compatible connector auth path or Anthropic-approved custom connection support. Static user-pasted bearer tokens are not currently supported for reviewed authenticated connectors.
+Liner MCP now advertises OAuth metadata, so the reviewed Claude Connectors Directory path is no longer blocked by API-key auth. Before submission, verify OAuth login from Claude.ai and Claude Code with a fresh reviewer account, and verify the tool schema exposes `title` and `readOnlyHint: true` for every read-only tool.
 
-See `CONNECTOR_DIRECTORY_DRAFT.md` for the held submission draft and blocker checklist.
+See `CONNECTOR_DIRECTORY_DRAFT.md` for the submission draft and readiness checklist.
 
 ## Resources
 

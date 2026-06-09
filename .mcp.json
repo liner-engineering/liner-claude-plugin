@@ -3,9 +3,6 @@
     "liner": {
       "type": "http",
       "url": "https://platform.liner.com/api/v1/mcp",
-      "headers": {
-        "Authorization": "Bearer ${user_config.api_key}"
-      },
       "timeout": 600000
     }
   }
