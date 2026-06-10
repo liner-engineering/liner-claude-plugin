@@ -14,13 +14,11 @@ Liner provides AI-powered search APIs for applications that need fresh web conte
 
 | Tool | Use it for |
 | --- | --- |
-| `search_web` | General web retrieval with titles, URLs, snippets, and source metadata. |
-| `search_scholar` | Academic or scholarly retrieval. |
-| `quick_answer` | Short factual lookups and low-latency source-backed answers. |
-| `ai_search` | Concise cited answers for product, market, or technical questions. |
-| `ai_search_pro` | Higher-quality cited answers for harder or more nuanced questions. |
-| `deep_research` | Multi-step research briefs. |
-| `deep_research_pro` | Highest-effort research for difficult topics. |
+| `search_web` | General web retrieval with titles, URLs, snippets, and source metadata. Takes `query` and optional `limit`. |
+| `search_scholar` | Academic or scholarly retrieval from peer-reviewed sources. Takes `query` and optional `limit`. |
+| `search_agent` | AI-augmented search agent that synthesizes a cited answer via iterative search. Takes a `messages` array. |
+| `quick_answer_agent` | Short factual answers for quick lookups. Takes a `messages` array. |
+| `deep_research_agent` | Highest-effort multi-step research for comprehensive investigations. Takes a `messages` array. |
 
 All current Liner MCP tools are read-only: they retrieve or synthesize information and do not modify user data.
 
@@ -64,9 +62,9 @@ Use Liner to create a concise source-backed brief on agentic search products.
 
 | Skill | Purpose |
 | --- | --- |
-| `liner:setup` | Check setup, environment variables, MCP connection state, and available tools. |
-| `liner:source-backed-answer` | Choose between `quick_answer`, `ai_search`, and `ai_search_pro`. |
-| `liner:research-brief` | Choose between `deep_research` and `deep_research_pro`. |
+| `liner:setup` | Check setup, MCP connection state, and available tools. |
+| `liner:source-backed-answer` | Choose between `quick_answer_agent`, `search_agent`, and `search_web`. |
+| `liner:research-brief` | Run multi-step research briefs with `deep_research_agent`. |
 | `liner:scholar-search` | Use `search_scholar` for academic retrieval. |
 
 ## OAuth Notes

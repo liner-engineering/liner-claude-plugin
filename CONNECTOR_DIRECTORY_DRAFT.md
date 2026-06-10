@@ -52,11 +52,9 @@ Confirm these tool annotations before submission:
 | --- | --- | --- | --- |
 | `search_web` | Search Web | `readOnlyHint: true` | Searches the public web and returns ranked source metadata. |
 | `search_scholar` | Search Scholar | `readOnlyHint: true` | Searches academic and scholarly sources. |
-| `quick_answer` | Quick Answer | `readOnlyHint: true` | Returns a short factual answer with supporting references. |
-| `ai_search` | AI Search | `readOnlyHint: true` | Generates a cited answer with web or scholarly source grounding. |
-| `ai_search_pro` | AI Search Pro | `readOnlyHint: true` | Generates a higher-effort cited answer for harder questions. |
-| `deep_research` | Deep Research | `readOnlyHint: true` | Runs a multi-step source-backed research workflow. |
-| `deep_research_pro` | Deep Research Pro | `readOnlyHint: true` | Runs the highest-effort source-backed research workflow. |
+| `search_agent` | Search Agent | `readOnlyHint: true` | Synthesizes a cited answer via iterative AI-augmented search. |
+| `quick_answer_agent` | Quick Answer | `readOnlyHint: true` | Returns a short factual answer with supporting references. |
+| `deep_research_agent` | Deep Research | `readOnlyHint: true` | Runs the highest-effort multi-step source-backed research workflow. |
 
 Schema audit checklist:
 
@@ -85,7 +83,7 @@ Fill before submission:
 | Login method | `[fill]` |
 | OAuth app/client configured | `[pending]` |
 | Test account has API credits | `[fill]` |
-| Features enabled | Web Search, Scholar Search, Quick Answer, AI Search, AI Search Pro, Deep Research, Deep Research Pro |
+| Features enabled | Web Search, Scholar Search, Search Agent, Quick Answer, Deep Research |
 | Expiration | Non-expiring |
 | Setup notes | Reviewer should connect the Liner connector and complete OAuth login in Claude. |
 

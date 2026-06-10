@@ -4,7 +4,7 @@ Use this checklist to move the Liner Claude plugin from local package to Claude'
 
 ## 1. Finalize Ownership
 
-- Confirm the public GitHub destination, for example `https://github.com/liner/liner-claude-plugin`.
+- Confirm the public GitHub destination: `https://github.com/mjkang-estrella/liner-claude-plugin`.
 - If the repository URL changes, update `.claude-plugin/plugin.json`, `README.md`, and `MARKETPLACE.md`.
 - Confirm Liner owns or has permission to use the Liner name, logo, docs links, and API.
 - Confirm the submitter has an authorized Liner company-domain account for Claude.ai or Console submission.
@@ -42,7 +42,7 @@ npx -y @modelcontextprotocol/inspector --cli https://platform.liner.com/api/v1/m
   --method tools/list
 ```
 
-Expected: all seven Liner MCP tools are listed.
+Expected: all five Liner MCP tools are listed (`search_web`, `search_scholar`, `search_agent`, `quick_answer_agent`, `deep_research_agent`).
 
 Run OAuth discovery checks:
 
@@ -70,8 +70,10 @@ Expected:
 
 Submit through one of the official forms:
 
-- Claude.ai: `https://claude.ai/settings/plugins/submit`
-- Console: `https://platform.claude.com/plugins/submit`
+- Claude.ai (requires a Team or Enterprise organization with directory management access): `https://claude.ai/admin-settings/directory/submissions/plugins/new`
+- Console (for individual authors): `https://platform.claude.com/plugins/submit`
+
+Approved plugins land in the community marketplace (`anthropics/claude-plugins-community`), pinned to a commit SHA; CI bumps the pin as you push new commits. Check the public catalog at `https://github.com/anthropics/claude-plugins-community/blob/main/.claude-plugin/marketplace.json` to confirm the listing.
 
 Submission inputs:
 
@@ -86,7 +88,7 @@ Submission inputs:
 
 - Confirm the plugin appears in the reviewed Claude Code marketplace / plugin directory.
 - Install from the public listing on a fresh machine or account.
-- Run `/mcp` and all seven smoke prompts from `TEST_PLAN.md`.
+- Run `/mcp` and all five smoke prompts from `TEST_PLAN.md`.
 - Monitor support requests for auth setup, MCP connection failures, and Deep Research runtime issues.
 - Push updates to the same GitHub repo; Claude docs say published plugin updates are picked up automatically after repo changes and automated screening.
 

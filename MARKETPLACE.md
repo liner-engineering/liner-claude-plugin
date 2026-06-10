@@ -8,11 +8,11 @@ Use this copy when submitting the plugin to Claude's reviewed plugin marketplace
 | --- | --- |
 | Plugin name | Liner |
 | Plugin ID | `liner` |
-| Version | `0.2.0` |
+| Version | `0.3.0` |
 | Category | Research, AI Tools, Developer Tools |
 | Homepage | `https://liner.com/developers` |
 | Documentation | `https://liner.com/developers/docs/mcp` |
-| Repository | `https://github.com/liner/liner-claude-plugin` |
+| Repository | `https://github.com/mjkang-estrella/liner-claude-plugin` |
 | License | Apache-2.0 |
 | Logo | `assets/liner-logo-square-512.png` |
 
@@ -28,8 +28,8 @@ Liner connects Claude to OAuth-secured source-backed research tools for fresh we
 
 - Search the public web and return ranked results with source metadata.
 - Search academic and scholarly sources.
-- Generate short factual answers with citations.
-- Generate richer AI Search answers for market, product, and technical questions.
+- Generate short factual answers with citations via `quick_answer_agent`.
+- Generate richer cited answers for market, product, and technical questions via `search_agent`.
 - Run multi-step source-backed research briefs directly from Claude Code or Cowork.
 
 ## Setup Copy

@@ -13,7 +13,7 @@ Checklist:
 3. Ask the user to open `/mcp`, select the `liner` server, and complete OAuth login in the browser.
 4. Ask the user to run `/reload-plugins` after plugin changes.
 5. Ask the user to open `/mcp` and confirm the `liner` server is connected.
-6. Confirm the server exposes `search_web`, `search_scholar`, `quick_answer`, `ai_search`, `ai_search_pro`, `deep_research`, and `deep_research_pro`.
+6. Confirm the server exposes `search_web`, `search_scholar`, `search_agent`, `quick_answer_agent`, and `deep_research_agent`.
 
 Never ask the user to paste an API key, access token, refresh token, or callback URL into chat unless Claude Code specifically asks them to paste the browser callback URL into its local prompt after a redirect failure. If authentication fails, explain how to use "Clear authentication" in `/mcp`, retry OAuth login, and reload or restart Claude Code.
 

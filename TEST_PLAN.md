@@ -37,7 +37,7 @@ Expected:
 - `/mcp` shows the `liner` server needs authentication on first use.
 - The user can complete browser-based OAuth login.
 - MCP server connects successfully after OAuth.
-- The Liner server exposes these tools: `search_web`, `search_scholar`, `quick_answer`, `ai_search`, `ai_search_pro`, `deep_research`, `deep_research_pro`.
+- The Liner server exposes these tools: `search_web`, `search_scholar`, `search_agent`, `quick_answer_agent`, `deep_research_agent`.
 
 ## OAuth Discovery Test
 
@@ -63,11 +63,9 @@ Use non-sensitive prompts:
 | --- | --- |
 | `search_web` | `Use Liner search_web for recent AI search trends.` |
 | `search_scholar` | `Use Liner search_scholar for retrieval augmented generation evaluation.` |
-| `quick_answer` | `Use Liner quick_answer: What is retrieval augmented generation?` |
-| `ai_search` | `Use Liner ai_search: Summarize current enterprise AI search trends.` |
-| `ai_search_pro` | `Use Liner ai_search_pro: Compare AI search APIs for source-backed answers.` |
-| `deep_research` | `Use Liner deep_research: Create a concise brief on agentic search products.` |
-| `deep_research_pro` | `Use Liner deep_research_pro: Create a deeper brief on agentic search products.` |
+| `quick_answer_agent` | `Use Liner quick_answer_agent: What is retrieval augmented generation?` |
+| `search_agent` | `Use Liner search_agent: Summarize current enterprise AI search trends.` |
+| `deep_research_agent` | `Use Liner deep_research_agent: Create a concise brief on agentic search products.` |
 
 Expected:
 

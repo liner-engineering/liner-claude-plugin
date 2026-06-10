@@ -1,34 +1,12 @@
 # Validation Report
 
-Validation date: 2026-06-08
+Validation date: 2026-06-10
 
 ## Summary
 
-The Claude plugin package validates successfully after switching from plugin-provided API-key configuration to OAuth-discovered Liner MCP authentication. The live MCP endpoint now returns OAuth protected-resource metadata, and the authorization server advertises dynamic client registration, PKCE, token refresh, revocation, and `mcp` scope.
+The Claude plugin package was revalidated against the current live Liner MCP server. The server now exposes a five-tool surface (`search_web`, `search_scholar`, `search_agent`, `quick_answer_agent`, `deep_research_agent`), replacing the previous seven-tool surface (`quick_answer`, `ai_search`, `ai_search_pro`, `deep_research`, `deep_research_pro`). All skills, the README, marketplace copy, test plan, and Connector Directory draft were updated to match, and the live tools were exercised directly against `https://platform.liner.com/api/v1/mcp` with a maintainer bearer credential.
 
-The remote Liner MCP server was also exercised with a real maintainer bearer credential loaded from `.env` to verify the current seven-tool surface. That smoke test validates tool behavior, but marketplace OAuth UX still needs one interactive Claude Code or Claude.ai login test.
-
-Claude Code live end-to-end testing was not completed in this environment because the local Claude CLI is not logged in and returned `Not logged in · Please run /login`.
-
-## Plugin Validation
-
-Command:
-
-```bash
-npx -y @anthropic-ai/claude-code plugin validate ./liner-claude-plugin --strict
-```
-
-Result:
-
-```text
-✔ Validation passed
-```
-
-Also checked:
-
-- `.claude-plugin/plugin.json` parses as valid JSON.
-- `.mcp.json` parses as valid JSON.
-- Secret scan found no plausible real API keys in `liner-claude-plugin`.
+The live MCP endpoint returns OAuth protected-resource metadata for unauthenticated requests, and the authorization server advertises dynamic client registration, PKCE, token refresh, revocation, and `mcp` scope.
 
 ## OAuth Discovery
 
@@ -43,70 +21,27 @@ Result:
 - Status: `401 Unauthorized`
 - Header: `WWW-Authenticate: Bearer resource_metadata="https://platform.liner.com/.well-known/oauth-protected-resource"`
 
-Protected-resource metadata:
-
-```json
-{
-  "resource": "https://platform.liner.com/api/v1/mcp",
-  "authorization_servers": ["https://platform.liner.com"]
-}
-```
-
-Authorization-server metadata:
-
-```json
-{
-  "issuer": "https://platform.liner.com",
-  "authorization_endpoint": "https://platform.liner.com/oauth/authorize",
-  "token_endpoint": "https://platform.liner.com/oauth/token",
-  "registration_endpoint": "https://platform.liner.com/oauth/register",
-  "revocation_endpoint": "https://platform.liner.com/oauth/revoke",
-  "response_types_supported": ["code"],
-  "grant_types_supported": ["authorization_code", "refresh_token"],
-  "code_challenge_methods_supported": ["S256"],
-  "token_endpoint_auth_methods_supported": ["none"],
-  "scopes_supported": ["mcp"]
-}
-```
-
 ## Remote MCP Tool Listing
 
-Maintainer smoke-test command shape:
+A raw Streamable HTTP session was opened with `initialize` (server reports `liner-mcp` v1.0.0, protocol `2025-06-18`) followed by `tools/list`. Tools listed:
 
-```bash
-npx -y @modelcontextprotocol/inspector --cli https://platform.liner.com/api/v1/mcp \
-  --transport http \
-  --header "Authorization: Bearer $LINER_API_KEY" \
-  --method tools/list
-```
-
-Result: success.
-
-Tools listed:
-
-- `search_web`
-- `search_scholar`
-- `ai_search`
-- `ai_search_pro`
-- `quick_answer`
-- `deep_research`
-- `deep_research_pro`
+- `search_web` — input: `query` (string, 1-1000 chars, required), `limit` (integer, 1-50, default 10)
+- `search_scholar` — input: `query` (string, 1-1000 chars, required), `limit` (integer, 1-50, default 10)
+- `search_agent` — input: `messages` (array of `{role: user|assistant, content: string}`, min 1, required)
+- `quick_answer_agent` — input: `messages` (same shape as above)
+- `deep_research_agent` — input: `messages` (same shape as above)
 
 ## Tool Schema Annotation Audit
 
-MCP Inspector currently lists all seven tools, but none of them expose top-level `title` or `annotations.readOnlyHint` fields.
-
-Current audit result:
+None of the five tools expose top-level `title` or `annotations.readOnlyHint` fields in the live schema.
 
 | Tool | `title` visible | `annotations.readOnlyHint` visible |
 | --- | --- | --- |
 | `search_web` | No | No |
 | `search_scholar` | No | No |
-| `quick_answer` | No | No |
-| `ai_search` | No | No |
-| `ai_search_pro` | No | No |
-| `deep_research` | No | No |
-| `deep_research_pro` | No | No |
+| `search_agent` | No | No |
+| `quick_answer_agent` | No | No |
+| `deep_research_agent` | No | No |
 
 This does not block Claude Code plugin marketplace validation, but it should be fixed server-side before a reviewed Claude Connectors Directory submission.
 
@@ -114,18 +49,14 @@ This does not block Claude Code plugin marketplace validation, but it should be 
 
 | Tool | Prompt / query | Result | Notes |
 | --- | --- | --- | --- |
-| `search_web` | `recent AI search trends` | Passed | Returned source result JSON; summarized payload was 3,607 chars. |
-| `search_scholar` | `retrieval augmented generation evaluation` | Passed | Returned scholarly result JSON; summarized payload was 17,530 chars. |
-| `quick_answer` | `What is retrieval augmented generation?` | Passed | Returned streamed answer events with references. |
-| `ai_search` | `Summarize current enterprise AI search trends in one paragraph.` | Passed | Returned streamed answer events; summarized payload was 4,039 chars. |
-| `ai_search_pro` | `Compare AI search APIs for source-backed answers in two concise bullets.` | Passed | Returned streamed answer events; summarized payload was 8,657 chars. |
-| `deep_research` | `Create a concise brief on agentic search products. Keep it short.` | Passed | Completed in about 54 seconds; summarized payload was 28,888 chars. |
-| `deep_research_pro` | `Create a concise brief on agentic search products. Keep it short.` | Passed | Completed in about 20 seconds; summarized payload was 10,331 chars. |
+| `search_web` | `Claude Code plugin marketplace` (limit 2) | Passed | Returned ranked result JSON with `requestId`, titles, URLs, descriptions. |
+| `search_scholar` | `large language model citations` (limit 1) | Passed | Returned scholarly result JSON with title, URL, hostname, abstract. |
+| `quick_answer_agent` | `What year was Anthropic founded?` | Passed | Returned streamed event JSON: `start`, `text-delta` answer, `data-search-references` with 3 sources, `finish`. |
+
+Agent tools (`search_agent`, `quick_answer_agent`, `deep_research_agent`) return a serialized stream of events; clients should read `text-delta` events for answer text and `data-search-references` for citation sources. Deep Research responses can be large and long-running, so reviewer prompts should be concise.
 
 ## Remaining Launch Risks
 
-- The public GitHub repo has not been created or pushed yet.
-- The repository URL in `plugin.json` is currently `https://github.com/liner/liner-claude-plugin`; update it if the official repo will use a different URL.
+- `claude plugin validate` should be re-run locally before submission (the review pipeline runs the same check).
 - Claude Code and Claude.ai end-to-end OAuth UX should be tested with a fresh Liner reviewer account.
-- Tool schemas should be audited for visible `title` and `readOnlyHint: true` annotations before reviewed Connectors Directory submission.
-- Deep Research responses can be large and long-running, so reviewer prompts should be concise.
+- Tool schemas should be audited server-side for visible `title` and `readOnlyHint: true` annotations before reviewed Connectors Directory submission.

@@ -1,0 +1,47 @@
+{
+  "name": "liner-claude-plugin",
+  "owner": {
+    "name": "Liner",
+    "url": "https://liner.com"
+  },
+  "metadata": {
+    "description": "Official Liner plugin for Claude Code - source-backed web search, scholar search, cited answers, and deep research powered by Liner MCP.",
+    "version": "0.3.0",
+    "pluginRoot": "./"
+  },
+  "plugins": [
+    {
+      "name": "liner",
+      "description": "OAuth-secured source-backed web search, scholar search, cited answers, and deep research workflows powered by Liner MCP.",
+      "version": "0.3.0",
+      "source": "./",
+      "author": {
+        "name": "Liner",
+        "url": "https://liner.com"
+      },
+      "homepage": "https://liner.com/developers/docs/mcp",
+      "repository": "https://github.com/mjkang-estrella/liner-claude-plugin",
+      "license": "Apache-2.0",
+      "keywords": [
+        "liner",
+        "mcp",
+        "search",
+        "web-search",
+        "scholar-search",
+        "citations",
+        "research",
+        "deep-research",
+        "ai-search"
+      ],
+      "category": "External integrations",
+      "tags": [
+        "search",
+        "web",
+        "scholar",
+        "research",
+        "citations",
+        "mcp"
+      ]
+    }
+  ]
+}
