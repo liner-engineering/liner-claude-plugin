@@ -33,17 +33,17 @@ A raw Streamable HTTP session was opened with `initialize` (server reports `line
 
 ## Tool Schema Annotation Audit
 
-None of the five tools expose top-level `title` or `annotations.readOnlyHint` fields in the live schema.
+Re-audited 2026-06-10 after a server-side fix: all five tools now expose a top-level `title` and full annotations (`readOnlyHint: true`, `destructiveHint: false`, `openWorldHint: true`).
 
-| Tool | `title` visible | `annotations.readOnlyHint` visible |
-| --- | --- | --- |
-| `search_web` | No | No |
-| `search_scholar` | No | No |
-| `search_agent` | No | No |
-| `quick_answer_agent` | No | No |
-| `deep_research_agent` | No | No |
+| Tool | Title | `readOnlyHint` | `destructiveHint` | `openWorldHint` |
+| --- | --- | --- | --- | --- |
+| `search_web` | Web Search | `true` | `false` | `true` |
+| `search_scholar` | Scholar Search | `true` | `false` | `true` |
+| `search_agent` | Search Agent | `true` | `false` | `true` |
+| `quick_answer_agent` | Quick Answer Agent | `true` | `false` | `true` |
+| `deep_research_agent` | Deep Research Agent | `true` | `false` | `true` |
 
-This does not block Claude Code plugin marketplace validation, but it should be fixed server-side before a reviewed Claude Connectors Directory submission.
+This satisfies the Connectors Directory requirement that every tool include a `title` and the applicable `readOnlyHint`/`destructiveHint` declarations.
 
 ## Tool Smoke Tests
 
@@ -59,4 +59,3 @@ Agent tools (`search_agent`, `quick_answer_agent`, `deep_research_agent`) return
 
 - `claude plugin validate` should be re-run locally before submission (the review pipeline runs the same check).
 - Claude Code and Claude.ai end-to-end OAuth UX should be tested with a fresh Liner reviewer account.
-- Tool schemas should be audited server-side for visible `title` and `readOnlyHint: true` annotations before reviewed Connectors Directory submission.

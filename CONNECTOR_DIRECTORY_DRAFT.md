@@ -10,9 +10,9 @@ Use this draft for a Claude Connectors Directory submission after final OAuth lo
 | Transport | Ready: Streamable HTTP |
 | OAuth discovery | Ready: MCP returns `401` with `WWW-Authenticate` protected-resource metadata. |
 | Authorization server | Ready: `https://platform.liner.com/.well-known/oauth-authorization-server` advertises authorization, token, registration, revocation, PKCE S256, and `mcp` scope. |
-| Tool surface | Ready after final `title` and `readOnlyHint: true` schema audit. |
+| Tool surface | Ready: all five tools expose `title`, `readOnlyHint: true`, `destructiveHint: false`, `openWorldHint: true` (verified live 2026-06-10). |
 | Current auth | OAuth 2.0 authorization code with PKCE and dynamic client registration. |
-| Submission recommendation | Submit after a fresh Claude.ai OAuth login test and tool annotation audit. |
+| Submission recommendation | Submit after a fresh Claude.ai OAuth login test with a reviewer account. |
 
 ## Server Basics
 
@@ -46,15 +46,15 @@ Use this draft for a Claude Connectors Directory submission after final OAuth lo
 
 ## Tool Inventory
 
-Confirm these tool annotations before submission:
+Annotations verified live on 2026-06-10. Every tool exposes `readOnlyHint: true`, `destructiveHint: false`, `openWorldHint: true`:
 
-| Tool name | Human title | Expected annotation | Description guardrail |
-| --- | --- | --- | --- |
-| `search_web` | Search Web | `readOnlyHint: true` | Searches the public web and returns ranked source metadata. |
-| `search_scholar` | Search Scholar | `readOnlyHint: true` | Searches academic and scholarly sources. |
-| `search_agent` | Search Agent | `readOnlyHint: true` | Synthesizes a cited answer via iterative AI-augmented search. |
-| `quick_answer_agent` | Quick Answer | `readOnlyHint: true` | Returns a short factual answer with supporting references. |
-| `deep_research_agent` | Deep Research | `readOnlyHint: true` | Runs the highest-effort multi-step source-backed research workflow. |
+| Tool name | Live title | Description guardrail |
+| --- | --- | --- |
+| `search_web` | Web Search | Searches the public web and returns ranked source metadata. |
+| `search_scholar` | Scholar Search | Searches academic and scholarly sources. |
+| `search_agent` | Search Agent | Synthesizes a cited answer via iterative AI-augmented search. |
+| `quick_answer_agent` | Quick Answer Agent | Returns a short factual answer with supporting references. |
+| `deep_research_agent` | Deep Research Agent | Runs the highest-effort multi-step source-backed research workflow. |
 
 Schema audit checklist:
 

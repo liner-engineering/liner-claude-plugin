@@ -77,7 +77,7 @@ Do not paste tokens or API keys into chat, commit them to this repository, or pl
 
 ## Claude Connectors Directory Status
 
-Liner MCP now advertises OAuth metadata, so the reviewed Claude Connectors Directory path is no longer blocked by API-key auth. Before submission, verify OAuth login from Claude.ai and Claude Code with a fresh reviewer account, and verify the tool schema exposes `title` and `readOnlyHint: true` for every read-only tool.
+Liner MCP advertises OAuth metadata, and every tool exposes `title`, `readOnlyHint: true`, `destructiveHint: false`, and `openWorldHint: true` (verified live 2026-06-10). The remaining pre-submission step is verifying OAuth login from Claude.ai and Claude Code with a fresh reviewer account.
 
 See `CONNECTOR_DIRECTORY_DRAFT.md` for the submission draft and readiness checklist.
 
