@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.2 - 2026-09-14
+
+- Added a Cursor plugin manifest (`.cursor-plugin/plugin.json`) and `mcp.json` so the same repository installs in Cursor.
+- Added `llms-install.md` with OAuth and API key setup for other MCP clients.
+- Added a square Liner icon (`assets/liner-icon-512.png`, `assets/liner-icon-400.png`).
+
 ## 0.3.1 - 2026-09-14
 
 - Moved the repository to `https://github.com/liner-engineering/liner-claude-plugin` so Liner owns and maintains the plugin source.

@@ -1,7 +1,7 @@
 {
   "name": "liner",
   "displayName": "Liner",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "OAuth-secured source-backed web search, scholar search, cited answers, and deep research workflows powered by Liner MCP.",
   "author": {
     "name": "Liner",

@@ -44,6 +44,14 @@ Inside Claude Code:
 
 Confirm the `liner` MCP server appears, then choose the authentication option and complete the OAuth login in your browser. Claude Code stores and refreshes OAuth tokens securely. If tools do not appear after login, run `/reload-plugins` or restart Claude Code.
 
+## Install in Cursor
+
+This repository is also a Cursor plugin (`.cursor-plugin/plugin.json`). It bundles the same remote MCP server (`mcp.json`) and skills. After installing, open the Liner MCP server in Cursor and complete the OAuth login in your browser.
+
+## Other MCP Clients
+
+Any client that supports remote Streamable HTTP servers can connect to `https://platform.liner.com/api/v1/mcp`. See [`llms-install.md`](llms-install.md) for OAuth and API key setup.
+
 ## Example Prompts
 
 ```text

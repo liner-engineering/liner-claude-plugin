@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Official Liner plugin for Claude Code - source-backed web search, scholar search, cited answers, and deep research powered by Liner MCP.",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "pluginRoot": "./"
   },
   "plugins": [
     {
       "name": "liner",
       "description": "OAuth-secured source-backed web search, scholar search, cited answers, and deep research workflows powered by Liner MCP.",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "source": "./",
       "author": {
         "name": "Liner",

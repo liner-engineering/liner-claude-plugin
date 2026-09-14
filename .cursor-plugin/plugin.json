@@ -1,0 +1,15 @@
+{
+  "name": "liner",
+  "description": "Cited web and academic search plus deep research in Cursor, powered by Liner's OAuth-secured MCP server and research workflow skills.",
+  "version": "0.3.2",
+  "author": {
+    "name": "Liner"
+  },
+  "homepage": "https://liner.com/developers/docs/mcp",
+  "repository": "https://github.com/liner-engineering/liner-claude-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["liner", "mcp", "search", "web-search", "scholar-search", "citations", "research", "deep-research"],
+  "logo": "assets/liner-icon-512.png",
+  "skills": "./skills",
+  "mcpServers": "./mcp.json"
+}

@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "liner": {
+      "url": "https://platform.liner.com/api/v1/mcp"
+    }
+  }
+}
