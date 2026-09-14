@@ -1,14 +1,14 @@
 {
   "name": "liner",
   "displayName": "Liner",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "OAuth-secured source-backed web search, scholar search, cited answers, and deep research workflows powered by Liner MCP.",
   "author": {
     "name": "Liner",
     "url": "https://liner.com"
   },
   "homepage": "https://liner.com/developers/docs/mcp",
-  "repository": "https://github.com/mjkang-estrella/liner-claude-plugin",
+  "repository": "https://github.com/liner-engineering/liner-claude-plugin",
   "license": "Apache-2.0",
   "keywords": [
     "liner",

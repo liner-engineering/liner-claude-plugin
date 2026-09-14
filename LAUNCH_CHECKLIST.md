@@ -4,7 +4,7 @@ Use this checklist to move the Liner Claude plugin from local package to Claude'
 
 ## 1. Finalize Ownership
 
-- Confirm the public GitHub destination: `https://github.com/mjkang-estrella/liner-claude-plugin`.
+- Confirm the public GitHub destination: `https://github.com/liner-engineering/liner-claude-plugin`.
 - If the repository URL changes, update `.claude-plugin/plugin.json`, `README.md`, and `MARKETPLACE.md`.
 - Confirm Liner owns or has permission to use the Liner name, logo, docs links, and API.
 - Confirm the submitter has an authorized Liner company-domain account for Claude.ai or Console submission.

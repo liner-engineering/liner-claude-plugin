@@ -12,7 +12,7 @@ Use this copy when submitting the plugin to Claude's reviewed plugin marketplace
 | Category | Research, AI Tools, Developer Tools |
 | Homepage | `https://liner.com/developers` |
 | Documentation | `https://liner.com/developers/docs/mcp` |
-| Repository | `https://github.com/mjkang-estrella/liner-claude-plugin` |
+| Repository | `https://github.com/liner-engineering/liner-claude-plugin` |
 | License | Apache-2.0 |
 | Logo | `assets/liner-logo-square-512.png` |
 

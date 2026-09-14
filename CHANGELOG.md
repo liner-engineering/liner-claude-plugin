@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1 - 2026-09-14
+
+- Moved the repository to `https://github.com/liner-engineering/liner-claude-plugin` so Liner owns and maintains the plugin source.
+
 ## 0.3.0
 
 - Updated all skills and docs to the current live Liner MCP tool surface: `search_web`, `search_scholar`, `search_agent`, `quick_answer_agent`, `deep_research_agent` (replacing `quick_answer`, `ai_search`, `ai_search_pro`, `deep_research`, `deep_research_pro`).

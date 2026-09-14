@@ -6,21 +6,21 @@
   },
   "metadata": {
     "description": "Official Liner plugin for Claude Code - source-backed web search, scholar search, cited answers, and deep research powered by Liner MCP.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "pluginRoot": "./"
   },
   "plugins": [
     {
       "name": "liner",
       "description": "OAuth-secured source-backed web search, scholar search, cited answers, and deep research workflows powered by Liner MCP.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "source": "./",
       "author": {
         "name": "Liner",
         "url": "https://liner.com"
       },
       "homepage": "https://liner.com/developers/docs/mcp",
-      "repository": "https://github.com/mjkang-estrella/liner-claude-plugin",
+      "repository": "https://github.com/liner-engineering/liner-claude-plugin",
       "license": "Apache-2.0",
       "keywords": [
         "liner",
