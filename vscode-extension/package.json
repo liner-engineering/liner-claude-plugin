@@ -1,0 +1,49 @@
+{
+  "name": "liner-search",
+  "displayName": "Liner Search & Research",
+  "description": "Cited web and academic search plus deep research in GitHub Copilot agent mode, powered by Liner's MCP server.",
+  "version": "0.1.0",
+  "publisher": "liner",
+  "license": "Apache-2.0",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#14371B",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "keywords": [
+    "mcp",
+    "liner",
+    "search",
+    "web search",
+    "scholar",
+    "research",
+    "deep research",
+    "citations",
+    "copilot"
+  ],
+  "homepage": "https://liner.com/developers/docs/mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liner-engineering/liner-claude-plugin",
+    "directory": "vscode-extension"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "liner",
+        "label": "Liner"
+      }
+    ]
+  }
+}
