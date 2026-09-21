@@ -1,0 +1,12 @@
+# 보안 게이트 (보안 가드레일이 자동 배포한 표준 워크플로). 이 PR 이 새로 들여온 CRITICAL 취약 의존성과
+# PR 커밋 히스토리의 시크릿을 차단한다. 결과는 PR 코멘트 "Security Scan" 으로 안내.
+# 예외: 취약점은 .trivyignore.yaml(사유·만료일 필수), 시크릿은 .gitleaksignore(fingerprint).
+# 세부/문의: liner-engineering/security/.github/actions/security-scan/README.md (보안팀 #2-security-and-compliance-squad)
+name: Security Scan
+on: pull_request
+jobs:
+  security-scan:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: liner-engineering/security/.github/workflows/security-scan.yml@v1
