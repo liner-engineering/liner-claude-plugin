@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.3 - 2026-09-22
+
+- Added the required `name` field to the frontmatter of all four skills (`research-brief`, `scholar-search`, `setup`, `source-backed-answer`). Skill runners that require both `name` and `description` were skipping every skill in this repository.
+
 ## 0.3.2 - 2026-09-14
 
 - Added a Cursor plugin manifest (`.cursor-plugin/plugin.json`) and `mcp.json` so the same repository installs in Cursor.

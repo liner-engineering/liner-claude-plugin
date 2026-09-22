@@ -1,7 +1,7 @@
 {
   "name": "liner",
   "description": "Cited web and academic search plus deep research in Cursor, powered by Liner's OAuth-secured MCP server and research workflow skills.",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": {
     "name": "Liner"
   },

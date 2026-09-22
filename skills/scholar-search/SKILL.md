@@ -1,4 +1,5 @@
 ---
+name: scholar-search
 description: Use Liner search_scholar for academic retrieval, literature scans, and scholarly source discovery. Use when the user asks for papers, journals, preprints, or peer-reviewed evidence.
 argument-hint: <topic>
 ---

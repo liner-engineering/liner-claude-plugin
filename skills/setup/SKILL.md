@@ -1,4 +1,5 @@
 ---
+name: setup
 description: Set up or troubleshoot the Liner Claude plugin, OAuth login, and the liner MCP server connection.
 ---
 

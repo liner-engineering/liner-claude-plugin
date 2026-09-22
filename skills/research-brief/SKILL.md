@@ -1,4 +1,5 @@
 ---
+name: research-brief
 description: Use Liner deep_research_agent for multi-step source-backed research briefs and complex investigations. Use when the user asks for deep, exhaustive, or multi-source research.
 argument-hint: <research question>
 ---
