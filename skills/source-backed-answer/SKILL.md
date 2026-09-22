@@ -1,4 +1,5 @@
 ---
+name: source-backed-answer
 description: Use Liner MCP to answer factual, product, market, or technical questions with citations and source-backed context. Use when the user needs a current-information answer backed by web sources.
 argument-hint: <question>
 ---
