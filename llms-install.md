@@ -43,4 +43,6 @@ Ask the user for their key. Never invent one or commit it to a repository.
 
 After connecting, the server should list five read-only tools: `search_web`, `search_scholar`, `search_agent`, `quick_answer_agent`, and `deep_research_agent`. Try: "Use Liner to find recent peer-reviewed papers on retrieval-augmented generation evaluation."
 
+`search_web` also returns Premium Data tables by default (company metrics, stock prices, economics, crypto, FX, rates, polls, prediction markets, live sports scores, weather), billed at $2 per 1,000 calls. Data sources include S&P Global (https://www.spglobal.com), Semrush (https://www.semrush.com), AccuWeather (https://www.accuweather.com), Cboe (https://www.cboe.com), The World Bank (https://www.worldbank.org), Sportradar (https://sportradar.com), BIS (https://www.bis.org), and YouGov (https://yougov.com). Try: "Use Liner to get NVIDIA's latest earnings estimates and stock price."
+
 Docs: https://liner.com/developers/docs/mcp
