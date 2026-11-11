@@ -14,6 +14,8 @@ Five read-only tools from the Liner MCP server:
 | `search_agent` | Richer cited answers built from several searches |
 | `deep_research_agent` | Multi-step research reports |
 
+`search_web` returns Premium Data by default: tables of company metrics, stock prices, economic indicators, crypto, FX, interest rates, public opinion polls, prediction markets, live sports scores, and weather that match the query. Data sources include S&P Global (https://www.spglobal.com), Semrush (https://www.semrush.com), AccuWeather (https://www.accuweather.com), Cboe (https://www.cboe.com), The World Bank (https://www.worldbank.org), Sportradar (https://sportradar.com), BIS (https://www.bis.org), and YouGov (https://yougov.com).
+
 ## Get started
 
 1. Install this extension.
