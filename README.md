@@ -14,13 +14,29 @@ Liner provides AI-powered search APIs for applications that need fresh web conte
 
 | Tool | Use it for |
 | --- | --- |
-| `search_web` | General web retrieval with titles, URLs, snippets, and source metadata. Takes `query` and optional `limit`. |
+| `search_web` | General web retrieval with titles, URLs, snippets, and source metadata, plus Premium Data tables (stock prices, earnings estimates, crypto, web traffic, prediction markets, live sports scores, and more). Takes `query` and optional `limit`. |
 | `search_scholar` | Academic or scholarly retrieval from peer-reviewed sources. Takes `query` and optional `limit`. |
 | `search_agent` | AI-augmented search agent that synthesizes a cited answer via iterative search. Takes a `messages` array. |
 | `quick_answer_agent` | Short factual answers for quick lookups. Takes a `messages` array. |
 | `deep_research_agent` | Highest-effort multi-step research for comprehensive investigations. Takes a `messages` array. |
 
 All current Liner MCP tools are read-only: they retrieve or synthesize information and do not modify user data.
+
+## Premium Data
+
+`search_web` returns structured data tables in `knowledge` alongside the search results when they match the query. Premium Data is on by default and billed at $2 per 1,000 calls.
+
+| Category | Examples |
+| --- | --- |
+| Company metrics | Financials, earnings and estimates, M&A, venture funding, web traffic and app analytics |
+| Stocks | Prices and market data from global exchanges, including NYSE, Nasdaq, Korea Exchange, Tokyo, and Euronext |
+| Economics | Employment, trade, energy, government spending and debt |
+| Prices & rates | Cryptocurrencies, FX, commodities, inflation, interest rates, treasury yields |
+| Politics & reference | Public opinion polls, prediction markets, demographics |
+| Sports | Live scores and results, teams, and players for major leagues |
+| Weather & climate | Current conditions, forecasts, and historical weather |
+
+Data sources include [S&P Global](https://www.spglobal.com), [Semrush](https://www.semrush.com), [AccuWeather](https://www.accuweather.com), [Cboe](https://www.cboe.com), [The World Bank](https://www.worldbank.org), [Sportradar](https://sportradar.com), [BIS](https://www.bis.org), and [YouGov](https://yougov.com). See the [Search API documentation](https://liner.com/developers/docs/search-api) for the full list of covered data.
 
 ## Requirements
 
@@ -56,6 +72,14 @@ Any client that supports remote Streamable HTTP servers can connect to `https://
 
 ```text
 Use Liner to find recent AI search trends.
+```
+
+```text
+Use Liner to get NVIDIA's latest earnings estimates and stock price.
+```
+
+```text
+Use Liner to check prediction market odds and recent polls for the next US election.
 ```
 
 ```text
