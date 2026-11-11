@@ -8,7 +8,7 @@ Five read-only tools from the Liner MCP server:
 
 | Tool | Use it for |
 | --- | --- |
-| `search_web` | Real-time web results with titles, URLs, and snippets |
+| `search_web` | Real-time web results with titles, URLs, and snippets, plus Premium Data tables such as stock prices, crypto, and live sports scores |
 | `search_scholar` | Peer-reviewed and scholarly sources |
 | `quick_answer_agent` | Short factual answers with citations |
 | `search_agent` | Richer cited answers built from several searches |

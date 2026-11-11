@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Documented Premium Data in `search_web`: covered categories, data sources, and example prompts.
+
 ## 0.3.2 - 2026-09-14
 
 - Added a Cursor plugin manifest (`.cursor-plugin/plugin.json`) and `mcp.json` so the same repository installs in Cursor.
